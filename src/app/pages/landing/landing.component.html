@@ -8,39 +8,9 @@
   </div>
 
   <div class="card-deck">
-    <div class="card shadow-sm mb-4">
-      <app-card></app-card>
+    <div class="card shadow-sm mb-4" *ngFor="let card of cardList">
+      <app-card [data]="card"></app-card>
     </div>
-
-    <div class="card shadow-sm mb-4">
-      <app-card></app-card>
-    </div>
-
-    <div class="card shadow-sm mb-4">
-      <app-card></app-card>
-    </div>
-
-
-    <div class="card shadow-sm mb-4">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">HTML/CSS</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title">1 <small class="text-muted">/Week</small></h1>
-        <p>There are some text in paragraph. Some more text will be here. </p>
-      </div>
-    </div>
-
-    <div class="card shadow-sm mb-4">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">HTML/CSS</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title">1 <small class="text-muted">/Week</small></h1>
-        <p>There are some text in paragraph. Some more text will be here. </p>
-      </div>
-    </div>
-
   </div>
 
 </main>
