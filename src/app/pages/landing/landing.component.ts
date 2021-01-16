@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Card} from '../../shared/interfaces';
+import {StudentService, TeacherService} from '../../common/services';
 
 
 @Component({
@@ -8,23 +9,40 @@ import {Card} from '../../shared/interfaces';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
-  public cardList: Card[] = [];
+  public studentTitle = 'All Students';
+  public teacherTitle = 'All Teachers';
 
-  constructor() {
-    this.cardList = this.getCardList();
+  public studentList: Card[] = [];
+  public teacherList: Card[] = [];
+
+  constructor(private studentService: StudentService, private teacherService: TeacherService) {
+    this.setStudentList();
+    this.setTeacherList();
   }
 
   ngOnInit(): void {
   }
 
+  private setStudentList(): void{
 
-  private getCardList(): Card[]{
-    let allCard: Card[];
-    allCard = [];
+    this.studentService.getStudentList().then(res => {
+      if (res.serviceResult && res.serviceResult.success === true){
+        this.studentList = res.data;
+      }
+      else {
+        console.log('Error', res);
+      }
+    });
+  }
 
-    allCard.push({title: 'HTML-CSS', count: 3, frequent: 'Weekly', body: 'This is html Component.'});
-    allCard.push({title: 'JavaScript', count: 2, frequent: 'Weekly', body: 'This is JavaScript Component.'});
-    allCard.push({title: 'Angular', count: 1, frequent: 'Monthly', body: 'This is Angular Component.'});
-    return allCard;
+  private setTeacherList(): void{
+    this.teacherService.getTeacherList().then(res => {
+      if (res.serviceResult && res.serviceResult.success === true){
+        this.teacherList = res.data;
+      }
+      else {
+        console.log('Error', res);
+      }
+    });
   }
 }

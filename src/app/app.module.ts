@@ -8,6 +8,9 @@ import { FooterComponent } from './common/components/footer/footer.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { AboutComponent } from './pages/about/about.component';
 import { CardComponent } from './shared/component/card/card.component';
+import { BoxListComponent } from './shared/component/box-list/box-list.component';
+import {HttpService, StudentService, TeacherService, UrlService} from './common/services';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,13 +19,16 @@ import { CardComponent } from './shared/component/card/card.component';
     FooterComponent,
     LandingComponent,
     AboutComponent,
-    CardComponent
+    CardComponent,
+    BoxListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+    AppRoutingModule,
+    HttpClientModule
+    ],
+
+  providers: [ HttpService, UrlService, StudentService, TeacherService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

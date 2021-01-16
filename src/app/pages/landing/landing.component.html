@@ -7,10 +7,7 @@
     </p>
   </div>
 
-  <div class="card-deck">
-    <div class="card shadow-sm mb-4" *ngFor="let card of cardList">
-      <app-card [data]="card"></app-card>
-    </div>
-  </div>
+  <app-box-list [title]="studentTitle" [cardList]="studentList"></app-box-list>
+  <app-box-list [title]="teacherTitle" [cardList]="teacherList"></app-box-list>
 
 </main>
